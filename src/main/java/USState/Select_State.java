@@ -1,12 +1,17 @@
 package USState;
 
+import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.devtools.idealized.Javascript;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserContext;
@@ -21,17 +26,16 @@ public class Select_State {
 
 	//Alt+Shift+a == select and type for all 
 
-//	static String stateName="iowa";
 //	static String stateName="alabama ";
 //	static String stateName="alaska  ";
 //	static String stateName="arizona ";
 //	static String stateName="arkansas";
-	static String stateName="california";
+//	static String stateName="california";
 //	static String stateName="colorado";
 //	static String stateName="connecticut";
 //	static String stateName="delaware";
 //	static String stateName="district-of-columbia";
-//	static String stateName="florida ";
+	static String stateName="florida ";
 //	static String stateName="georgia ";
 //	static String stateName="hawaii  ";
 //	static String stateName="idaho   ";
@@ -75,11 +79,13 @@ public class Select_State {
 //	static String stateName="wyomingN" ;                       
 
 
-	public static void clickCountry(String stateName) {
+	public static void clickCountry(String stateName) throws InterruptedException {
+		
 		String list51="//*[name()='svg' and @id='map-svg']//*[@id='features']//*[name()='g']//*[name()='g' and  @class='region']";
 		String iframe="//iframe[@src='https://api.capcvet.org/api/embed/forecast/n0vA38xpQ4J7Tcv4PA4v3NXtr4yo41AQVYaUQ7qr?iframe=1']";
 
 		WebDriver  d=new ChromeDriver();
+		WebDriverWait w=new WebDriverWait(d, Duration.ofSeconds(10));
 		d.get("https://petdiseasealerts.org/forecast-map#/");
 		d.manage().window().maximize();
 		try {
@@ -88,11 +94,11 @@ public class Select_State {
 			Thread.sleep(5000);
 			List<WebElement> findElements = frame.findElements(By.xpath(list51));
 			System.out.println(findElements.size());
+			
 			int j=1;
 				for (WebElement webElement : findElements) {
 				String attribute = webElement.getAttribute("id");
 				System.out.println(j+"."+attribute);
-				System.out.println(attribute.trim());
 				j++;
 			}
 			task:	for (int i = 0; i < findElements.size(); i++) {
@@ -100,27 +106,35 @@ public class Select_State {
 				i++;
 				System.err.println(i+"."+attribute);
 				i--;
-				if (attribute.equalsIgnoreCase(stateName.trim())) {
+				if (attribute.equalsIgnoreCase(stateName)) {
+					Thread.sleep(3000);
 					Actions a= new Actions(d);
-					a.click(findElements.get(i)).perform();
+					
+//					a.click(findElements.get(i)).perform();
 					
 /*******************************or*****Clicking ************************************/
 					
 //					a.moveToElement(findElements.get(i)).build().perform();
-//					a.click().perform();
+//					Thread.sleep(3000);
+//					a.click().build().perform();
 					
 /*******************************OR*****Clicking ***********************************/
-//					a.moveToElement(findElements.get(i)).build().perform();
-//					findElements.get(i).click();	
+					WebElement webElement = w.until(ExpectedConditions.elementToBeClickable(findElements.get(i)));
+					a.moveToElement(webElement).build().perform();
+					Thread.sleep(3000);
+					findElements.get(i).click();	
 					break task;
 				}
 			}
 		} catch (InterruptedException e) {}
+		
+		Thread.sleep(10000);
+		d.quit();
 	}
 
-	public static void main(String[] args)  {
+	public static void main(String[] args) throws InterruptedException  {
 
-		clickCountry(stateName);
+		clickCountry(stateName.trim());
 	}
 
 }
