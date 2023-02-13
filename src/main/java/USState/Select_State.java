@@ -35,9 +35,9 @@ public class Select_State {
 //	static String stateName="connecticut";
 //	static String stateName="delaware";
 //	static String stateName="district-of-columbia";
-	static String stateName="florida ";
+//	static String stateName="florida ";
 //	static String stateName="georgia ";
-//	static String stateName="hawaii  ";
+	static String stateName="hawaii  ";
 //	static String stateName="idaho   ";
 //	static String stateName="illinois";
 //	static String stateName="indiana ";
@@ -81,7 +81,7 @@ public class Select_State {
 
 	public static void clickCountry(String stateName) throws InterruptedException {
 		
-		String list51="//*[name()='svg' and @id='map-svg']//*[@id='features']//*[name()='g']//*[name()='g' and  @class='region']";
+		String list51="//*[name()='svg' and @id='map-svg']//*[@id='features']//*[name()='g']//*[name()='g' and  @class='region']//*[name()='path' and @id]";
 		String iframe="//iframe[@src='https://api.capcvet.org/api/embed/forecast/n0vA38xpQ4J7Tcv4PA4v3NXtr4yo41AQVYaUQ7qr?iframe=1']";
 
 		WebDriver  d=new ChromeDriver();
@@ -97,12 +97,12 @@ public class Select_State {
 			
 			int j=1;
 				for (WebElement webElement : findElements) {
-				String attribute = webElement.getAttribute("id");
+				String attribute = webElement.getAttribute("name");
 				System.out.println(j+"."+attribute);
 				j++;
 			}
 			task:	for (int i = 0; i < findElements.size(); i++) {
-				String attribute = findElements.get(i).getAttribute("id").trim();
+				String attribute = findElements.get(i).getAttribute("name").trim();
 				i++;
 				System.err.println(i+"."+attribute);
 				i--;

@@ -24,7 +24,7 @@ public class MouseHover {
 		//			r.mouseMove(x,mouseY);
 		//		}
 
-	/*	int x = 0;
+		int x = 0;
 		int changeX=mouseX;
 		task1:	while (true)
 		{
@@ -45,10 +45,10 @@ int o=0;
 		int changeY=mouseY;
 		task2:	while (true)
 		{ 
-			if (changeY >= 0 && changeY <= changeY+20 ) {
+			if (changeY >= 0 && changeY <= mouseY+20 ) {
 				r.mouseMove(mouseX,changeY);
 				System.out.println(mouseX+","+changeY);
-				changeY=changeY+2;
+				changeY+=2;
 				System.err.println(y);
 				y++;
 				Thread.sleep(5000);
@@ -59,11 +59,18 @@ int o=0;
 
 			
 
-		}*/
-
-		for (int value = 5; value >= 0 && value <= 1000 || value<= 1080; value++) {
-		    System.out.println(value);
 		}
+/*
+		for (int mouseX1 = 1075; mouseX1 >= 0 && mouseX1<= mouseY; mouseX1++)
+		{
+			for (int mouseY1 = 0; mouseY1 >= 0 && mouseY1<= mouseY; mouseY1++) 
+			{
+				r.mouseMove(mouseX1,mouseY1);
+
+				Thread.sleep(5000);
+			}
+				
+		}*/
 
 
 	}
