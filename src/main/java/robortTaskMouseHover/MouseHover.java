@@ -1,4 +1,4 @@
-package robortTask;
+package robortTaskMouseHover;
 
 import java.awt.AWTException;
 import java.awt.MouseInfo;
@@ -40,7 +40,7 @@ public class MouseHover {
 				break task1;	
 			}
 		}
-int o=0;
+		int o=0;
 		int y = 0;
 		int changeY=mouseY;
 		task2:	while (true)
@@ -52,15 +52,15 @@ int o=0;
 				System.err.println(y);
 				y++;
 				Thread.sleep(5000);
-				
+
 			} else {
 				break task2;
 			}
 
-			
+
 
 		}
-/*
+		/*
 		for (int mouseX1 = 1075; mouseX1 >= 0 && mouseX1<= mouseY; mouseX1++)
 		{
 			for (int mouseY1 = 0; mouseY1 >= 0 && mouseY1<= mouseY; mouseY1++) 
@@ -69,7 +69,7 @@ int o=0;
 
 				Thread.sleep(5000);
 			}
-				
+
 		}*/
 
 
