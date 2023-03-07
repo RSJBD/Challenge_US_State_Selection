@@ -35,17 +35,19 @@ public class MouseHover {
 			System.err.println(x);
 			x++;
 			Thread.sleep(5000);
-			if (changeX==mouseX+20)
+			if (changeX==mouseX+100)
 			{
-				break task1;	
+				break task1;
+				
 			}
 		}
+		
 		int o=0;
 		int y = 0;
 		int changeY=mouseY;
 		task2:	while (true)
 		{ 
-			if (changeY >= 0 && changeY <= mouseY+20 ) {
+			if (changeY >= 0 && changeY <= mouseY+100) {
 				r.mouseMove(mouseX,changeY);
 				System.out.println(mouseX+","+changeY);
 				changeY+=2;

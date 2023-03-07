@@ -28,7 +28,7 @@ public class Select_State {
 
 //	static String stateName="alabama ";
 //	static String stateName="alaska  ";
-//	static String stateName="arizona ";
+	static String stateName="arizona ";
 //	static String stateName="arkansas";
 //	static String stateName="california";
 //	static String stateName="colorado";
@@ -37,7 +37,7 @@ public class Select_State {
 //	static String stateName="district-of-columbia";
 //	static String stateName="florida ";
 //	static String stateName="georgia ";
-	static String stateName="hawaii  ";
+//	static String stateName="hawaii  ";
 //	static String stateName="idaho   ";
 //	static String stateName="illinois";
 //	static String stateName="indiana ";
